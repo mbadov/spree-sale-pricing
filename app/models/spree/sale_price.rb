@@ -2,7 +2,7 @@ module Spree
   class SalePrice < ActiveRecord::Base
     # TODO validations
     belongs_to :price, :class_name => "Spree::Price"
-    attr_accessible :value, :start_at, :end_at, :enabled
+    attr_accessible :price_id, :value, :start_at, :end_at, :enabled
 
     scope :active, lambda {
       where("enabled = 't' AND (start_at <= ? OR start_at IS NULL) AND (end_at >= ? OR end_at IS NULL)", Time.now, Time.now)
