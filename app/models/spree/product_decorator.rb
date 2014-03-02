@@ -10,8 +10,8 @@ Spree::Product.class_eval do
   # TODO Should the all_variants flag be on option you set on creating the sale and then it always behaves as such? Seems unsafe to pass this flag one way during create and use a different value for it later (they can actively bypass by accessing each variant directly and changing the values)
 
   # TODO also accept a class reference for calculator type instead of only a string
-  def put_on_sale(value, calculator_type = "Spree::Calculator::DollarAmountSalePriceCalculator", all_variants = true, start_at = Time.now, end_at = nil, enabled = true)
-    run_on_variants(all_variants) { |v| v.put_on_sale(value, calculator_type, true, start_at, end_at, enabled) }
+  def put_on_sale(value, all_variants = true, start_at = Time.now, end_at = nil, enabled = true)
+    run_on_variants(all_variants) { |v| v.put_on_sale(value, true, start_at, end_at, enabled) }
   end
   alias :create_sale :put_on_sale
 
